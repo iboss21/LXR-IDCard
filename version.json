@@ -1,0 +1,80 @@
+{
+  "name": "tlw_idcard",
+  "displayName": "The Land of Wolves - IDCard System",
+  "version": "1.0.0",
+  "description": "Immersive citizenship ID card system for RedM servers using RSG-Core framework",
+  "author": "The Land of Wolves Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iboss21/LXR-IDCard"
+  },
+  "bugs": {
+    "url": "https://github.com/iboss21/LXR-IDCard/issues"
+  },
+  "framework": "RSG-Core",
+  "game": "rdr3",
+  "dependencies": {
+    "rsg-core": "latest",
+    "rsg-inventory": "latest",
+    "ox_lib": "latest",
+    "ox_target": "latest",
+    "oxmysql": "latest"
+  },
+  "features": [
+    "Multi-stage citizenship application process",
+    "Photographer locations with ox_target",
+    "Government office locations with ox_target",
+    "Beautiful wolf-themed western UI",
+    "Animated stamp reveal for approved citizens",
+    "Discord webhook integration",
+    "MySQL database persistence",
+    "Admin approval/denial commands",
+    "Cooldown system",
+    "Configurable fees and locations"
+  ],
+  "tags": [
+    "rsg-core",
+    "redm",
+    "roleplay",
+    "id-card",
+    "citizenship",
+    "immersive",
+    "ui",
+    "nui",
+    "discord",
+    "mysql"
+  ],
+  "compatibility": {
+    "redm": "latest",
+    "rsg-core": "latest",
+    "lua": "5.4"
+  },
+  "installation": {
+    "steps": [
+      "Clone or download the repository",
+      "Place in server resources folder",
+      "Add items to rsg-inventory config",
+      "Register usable items",
+      "Configure config.lua",
+      "Add to server.cfg",
+      "Restart server"
+    ],
+    "documentation": "INSTALL.md"
+  },
+  "support": {
+    "documentation": [
+      "README.md",
+      "INSTALL.md",
+      "TROUBLESHOOTING.md",
+      "CONTRIBUTING.md",
+      "TESTING.md",
+      "UI_PREVIEW.md"
+    ],
+    "examples": [
+      "config_examples.lua",
+      "inventory_integration.lua"
+    ]
+  },
+  "changelog": "CHANGELOG.md"
+}
