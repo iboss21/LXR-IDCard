@@ -199,8 +199,8 @@ For a complete experience, add these images to `rsg-inventory/html/images/`:
 ## 📚 Need More Help?
 
 **Full documentation available:**
-- 📖 [INSTALL.md](INSTALL.md) - Detailed setup
-- 🔧 [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - Fix common issues
+- 📖 [Full Installation Guide](INSTALL.md) - Detailed setup
+- 🔧 [Troubleshooting Guide](../guides/TROUBLESHOOTING.md) - Fix common issues
 - 🎨 [UI_PREVIEW.md](UI_PREVIEW.md) - Customize the design
 - ⚙️ [config_examples.lua](config_examples.lua) - Configuration scenarios
 

@@ -67,7 +67,7 @@ Config.AdvancedStatistics.enabled = true
 
 ### Step 4: Add Items to Inventory
 
-See [INSTALL.md](INSTALL.md) for detailed inventory integration steps.
+See [../getting-started/INSTALL.md](../getting-started/INSTALL.md) for detailed inventory integration steps.
 
 Items needed:
 - `photo_plate`
@@ -229,7 +229,7 @@ For visual charts in the statistics dashboard:
    local canTake = exports['tlw_idcard']:CanTakeJob(source, 'police')
    ```
 
-See [API_GUIDE.md](API_GUIDE.md) for complete integration instructions.
+See [../technical/API_GUIDE.md](../technical/API_GUIDE.md) for complete integration instructions.
 
 ---
 
@@ -401,7 +401,7 @@ Config.FamilyTiers.enabled = false
 
 ### Resources
 
-- **Documentation:** V3_FEATURES.md, API_GUIDE.md
+- **Documentation:** V3_FEATURES.md, ../technical/API_GUIDE.md
 - **GitHub Issues:** https://github.com/iboss21/LXR-IDCard/issues
 - **Discussions:** https://github.com/iboss21/LXR-IDCard/discussions
 

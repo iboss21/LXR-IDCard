@@ -428,7 +428,7 @@ Config.MultiLanguage = {
 
 -- ============================================
 -- For more examples and documentation:
--- - V3_FEATURES.md (complete feature details)
--- - API_GUIDE.md (integration examples)
--- - V3_INSTALLATION.md (setup guide)
+-- - docs/v3/V3_FEATURES.md (complete feature details)
+-- - docs/technical/API_GUIDE.md (integration examples)
+-- - docs/v3/V3_INSTALLATION.md (setup guide)
 -- ============================================
