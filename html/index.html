@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Land of Wolves - ID Card System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Application Form -->
+    <div id="applicationForm" class="container hidden">
+        <div class="form-card">
+            <div class="wolf-watermark">🐺</div>
+            <div class="card-header">
+                <h1 class="main-title">THE LAND OF WOLVES</h1>
+                <h2 class="subtitle">TERRITORIAL GOVERNOR'S OFFICE</h2>
+                <div class="divider"></div>
+                <h3 class="section-title">Citizenship Application</h3>
+            </div>
+            
+            <form id="citizenshipForm" class="form-content">
+                <div class="form-group">
+                    <label for="fullname">Full Name *</label>
+                    <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="birthdate">Date of Birth *</label>
+                    <input type="text" id="birthdate" name="birthdate" required placeholder="MM/DD/YYYY">
+                </div>
+                
+                <div class="form-group">
+                    <label for="birthplace">Birthplace *</label>
+                    <input type="text" id="birthplace" name="birthplace" required placeholder="City, State/Territory">
+                </div>
+                
+                <div class="form-group">
+                    <label for="occupation">Occupation *</label>
+                    <input type="text" id="occupation" name="occupation" required placeholder="Your occupation">
+                </div>
+                
+                <div class="form-group">
+                    <label for="reason">Reason for Immigration *</label>
+                    <textarea id="reason" name="reason" rows="4" required placeholder="Why do you seek citizenship in The Land of Wolves?"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-cancel" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-submit">Submit Application</button>
+                </div>
+            </form>
+            
+            <div class="form-footer">
+                <p>By submitting this application, you acknowledge the harsh laws of The Land of Wolves.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ID Card Display -->
+    <div id="cardDisplay" class="container hidden">
+        <div class="id-card">
+            <div class="card-background"></div>
+            <div class="card-border"></div>
+            
+            <div class="card-content">
+                <!-- Header -->
+                <div class="card-title-section">
+                    <h1 class="card-main-title">THE LAND OF WOLVES</h1>
+                    <h2 class="card-doc-type" id="cardDocType">TERRITORIAL IDENTIFICATION</h2>
+                    <div class="wolf-emblem">🐺</div>
+                </div>
+                
+                <!-- Photo and Info Section -->
+                <div class="card-body">
+                    <div class="photo-section">
+                        <div class="photo-frame">
+                            <div class="photo-placeholder">
+                                <span class="photo-text">OFFICIAL<br>PORTRAIT</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="info-row">
+                            <span class="info-label">NAME:</span>
+                            <span class="info-value" id="cardName">John Doe</span>
+                        </div>
+                        
+                        <div class="info-row">
+                            <span class="info-label">DATE OF BIRTH:</span>
+                            <span class="info-value" id="cardBirthdate">01/01/1850</span>
+                        </div>
+                        
+                        <div class="info-row">
+                            <span class="info-label">BIRTHPLACE:</span>
+                            <span class="info-value" id="cardBirthplace">Unknown</span>
+                        </div>
+                        
+                        <div class="info-row">
+                            <span class="info-label">OCCUPATION:</span>
+                            <span class="info-value" id="cardOccupation">Drifter</span>
+                        </div>
+                        
+                        <div class="info-row">
+                            <span class="info-label">CITIZEN ID:</span>
+                            <span class="info-value" id="cardCitizenId">XXXX-XXXX</span>
+                        </div>
+                        
+                        <div class="info-row">
+                            <span class="info-label">ISSUED:</span>
+                            <span class="info-value" id="cardIssued">00/00/0000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <div class="card-footer-section">
+                    <div class="signature-line">
+                        <span id="governorName">Territorial Governor</span>
+                    </div>
+                    <div class="card-number" id="cardStatus">RESIDENT PERMIT - PENDING FULL CITIZENSHIP</div>
+                </div>
+                
+                <!-- Approval Stamp (shown only for approved citizens) -->
+                <div class="stamp-overlay hidden" id="stampOverlay">
+                    <div class="stamp">
+                        <div class="stamp-circle">
+                            <div class="stamp-text">
+                                <span class="stamp-top">APPROVED</span>
+                                <span class="stamp-wolf">🐺</span>
+                                <span class="stamp-bottom">CITIZEN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
