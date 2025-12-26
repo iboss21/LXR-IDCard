@@ -26,6 +26,7 @@ document.addEventListener('keydown', function(event) {
 function closeUI() {
     document.getElementById('applicationForm').classList.add('hidden');
     document.getElementById('cardDisplay').classList.add('hidden');
+    document.getElementById('statisticsDisplay').classList.add('hidden'); // Phase 6
     post('close');
 }
 
@@ -86,6 +87,9 @@ window.addEventListener('message', function(event) {
         case 'showCard':
             showIDCard(data);
             break;
+        case 'showStatistics': // Phase 6
+            showStatistics(data);
+            break;
     }
 });
 
@@ -114,6 +118,62 @@ function showIDCard(data) {
     document.getElementById('cardIssued').textContent = data.data.issued || '00/00/0000';
     document.getElementById('governorName').textContent = data.governor || 'Territorial Governor';
     
+    // Phase 1: Show mugshot if available
+    const photoPlaceholder = document.getElementById('photoPlaceholder');
+    const photoImage = document.getElementById('photoImage');
+    if (data.data.photodata) {
+        photoPlaceholder.classList.add('hidden');
+        photoImage.src = data.data.photodata;
+        photoImage.classList.remove('hidden');
+    } else {
+        photoImage.classList.add('hidden');
+        photoPlaceholder.classList.remove('hidden');
+    }
+    
+    // Phase 4: Show expiration date if available
+    const expirationRow = document.getElementById('expirationRow');
+    if (data.data.expiration) {
+        try {
+            const expDate = new Date(data.data.expiration);
+            
+            // Validate date
+            if (isNaN(expDate.getTime())) {
+                console.error('Invalid expiration date:', data.data.expiration);
+                expirationRow.classList.add('hidden');
+            } else {
+                document.getElementById('cardExpiration').textContent = 
+                    (expDate.getMonth() + 1).toString().padStart(2, '0') + '/' + 
+                    expDate.getDate().toString().padStart(2, '0') + '/' + 
+                    expDate.getFullYear();
+                expirationRow.classList.remove('hidden');
+            }
+        } catch (error) {
+            console.error('Error parsing expiration date:', error);
+            expirationRow.classList.add('hidden');
+        }
+    } else {
+        expirationRow.classList.add('hidden');
+    }
+    
+    // Phase 5: Show tier badge if available
+    const tierBadge = document.getElementById('tierBadge');
+    if (data.data.tier) {
+        const tierConfig = {
+            'Basic': { icon: '📋', color: '#8b6f47' },
+            'Premium': { icon: '⭐', color: '#b8860b' },
+            'Elite': { icon: '👑', color: '#ffd700' }
+        };
+        
+        const tier = tierConfig[data.data.tier] || tierConfig['Basic'];
+        document.getElementById('tierBadgeIcon').textContent = tier.icon;
+        document.getElementById('tierBadgeText').textContent = data.data.tier;
+        tierBadge.style.borderColor = tier.color;
+        tierBadge.style.color = tier.color;
+        tierBadge.classList.remove('hidden');
+    } else {
+        tierBadge.classList.add('hidden');
+    }
+    
     // Set card type and status
     const docType = document.getElementById('cardDocType');
     const statusText = document.getElementById('cardStatus');
@@ -135,6 +195,59 @@ function showIDCard(data) {
     // Show card
     cardDisplay.classList.remove('hidden');
 }
+
+// Phase 6: Show statistics dashboard
+function showStatistics(data) {
+    const statsDisplay = document.getElementById('statisticsDisplay');
+    
+    // Set stat values
+    document.getElementById('statApplications').textContent = data.data.applications || 0;
+    document.getElementById('statApprovals').textContent = data.data.approvals || 0;
+    document.getElementById('statDenials').textContent = data.data.denials || 0;
+    document.getElementById('statPending').textContent = data.data.pending || 0;
+    document.getElementById('statReplacements').textContent = data.data.replacements || 0;
+    document.getElementById('statRenewals').textContent = data.data.renewals || 0;
+    
+    // Show tier distribution
+    const tierBars = document.getElementById('tierBars');
+    tierBars.innerHTML = '';
+    
+    if (data.data.tierDistribution) {
+        const total = Object.values(data.data.tierDistribution).reduce((a, b) => a + b, 0);
+        
+        for (const [tier, count] of Object.entries(data.data.tierDistribution)) {
+            const percentage = total > 0 ? (count / total * 100).toFixed(1) : 0;
+            
+            const tierConfig = {
+                'Basic': { icon: '📋', color: '#8b6f47' },
+                'Premium': { icon: '⭐', color: '#b8860b' },
+                'Elite': { icon: '👑', color: '#ffd700' }
+            };
+            
+            const config = tierConfig[tier] || tierConfig['Basic'];
+            
+            const tierBar = document.createElement('div');
+            tierBar.className = 'tier-bar';
+            tierBar.innerHTML = `
+                <div class="tier-bar-label">
+                    <span class="tier-bar-icon">${config.icon}</span>
+                    <span class="tier-bar-name">${tier}</span>
+                    <span class="tier-bar-count">${count} (${percentage}%)</span>
+                </div>
+                <div class="tier-bar-fill-bg">
+                    <div class="tier-bar-fill" style="width: ${percentage}%; background-color: ${config.color}"></div>
+                </div>
+            `;
+            tierBars.appendChild(tierBar);
+        }
+    }
+    
+    // Show statistics display
+    statsDisplay.classList.remove('hidden');
+}
+
+// Close button for statistics
+document.getElementById('statsCloseBtn').addEventListener('click', closeUI);
 
 // Debug logging
 console.log('The Land of Wolves - ID Card System Loaded');
