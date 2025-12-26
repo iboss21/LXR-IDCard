@@ -28,8 +28,11 @@ ui_page 'html/index.html'
 
 files {
     'html/index.html',
+    'html/features.html',
     'html/style.css',
+    'html/features.css',
     'html/script.js',
+    'html/features.js',
     'html/assets/*.png',
     'html/assets/*.jpg',
     'html/assets/*.ogg',
