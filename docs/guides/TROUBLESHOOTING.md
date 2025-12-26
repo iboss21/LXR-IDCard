@@ -545,4 +545,4 @@ Before asking for help, try this checklist:
 
 ---
 
-**Remember**: Most issues are configuration-related. Double-check all setup steps in INSTALL.md!
+**Remember**: Most issues are configuration-related. Double-check all setup steps in [../getting-started/INSTALL.md](../getting-started/INSTALL.md)!

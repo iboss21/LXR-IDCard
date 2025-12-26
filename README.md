@@ -49,6 +49,21 @@ The Land of Wolves IDCard script transforms citizenship into an engaging rolepla
 
 ---
 
+## 📚 Documentation
+
+All documentation has been organized into the `docs` folder for easy navigation:
+
+- **[📖 Documentation Index](docs/README.md)** - Complete documentation overview
+- **[🚀 Quick Start Guide](docs/getting-started/QUICKSTART.md)** - Get started quickly
+- **[📦 Installation Guide](docs/getting-started/INSTALL.md)** - Detailed installation steps
+- **[🎉 v3.0 Features](docs/v3/V3_FEATURES.md)** - New features in version 3.0
+- **[🔧 API Guide](docs/technical/API_GUIDE.md)** - Integration with other scripts
+- **[🔄 Migration Guide](docs/guides/MIGRATION_GUIDE.md)** - Upgrading from older versions
+- **[🛠️ Troubleshooting](docs/guides/TROUBLESHOOTING.md)** - Common issues and solutions
+- **[👨‍💻 Contributing](docs/development/CONTRIBUTING.md)** - How to contribute
+
+---
+
 ## 📸 Preview
 
 *Coming Soon: Screenshots of the application form and ID cards*
@@ -72,7 +87,7 @@ The Land of Wolves IDCard script transforms citizenship into an engaging rolepla
    git clone https://github.com/iboss21/LXR-IDCard.git tlw_idcard
    ```
 
-2. **Add items to inventory** (see [INSTALL.md](INSTALL.md))
+2. **Add items to inventory** (see [Installation Guide](docs/getting-started/INSTALL.md))
 
 3. **Configure locations and webhook** in `config.lua`
 
@@ -83,7 +98,7 @@ The Land of Wolves IDCard script transforms citizenship into an engaging rolepla
 
 5. **Restart server**
 
-📖 **Full installation guide**: [INSTALL.md](INSTALL.md)
+📖 **Full installation guide**: [docs/getting-started/INSTALL.md](docs/getting-started/INSTALL.md)
 
 ---
 
@@ -281,9 +296,9 @@ Using this script on your server? Let us know! We'd love to feature your communi
 - [ ] AI-powered photo enhancement
 - [ ] Blockchain-based verification
 
-📖 **See [ROADMAP_IMPLEMENTATION.md](ROADMAP_IMPLEMENTATION.md) for complete feature documentation**
+📖 **See [docs/development/ROADMAP_IMPLEMENTATION.md](docs/development/ROADMAP_IMPLEMENTATION.md) for complete feature documentation**
 
-🔄 **Upgrading? See [MIGRATION_GUIDE.md](MIGRATION_GUIDE.md) for migration instructions**
+🔄 **Upgrading? See [docs/guides/MIGRATION_GUIDE.md](docs/guides/MIGRATION_GUIDE.md) for migration instructions**
 
 ---
 
