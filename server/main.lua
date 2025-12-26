@@ -366,7 +366,19 @@ RegisterNetEvent('tlw_idcard:server:requestReplacement', function()
     local onCooldown, timeLeft = IsOnCooldown(src, 'replacement')
     if onCooldown then
         local hours = math.floor(timeLeft / 3600)
-        RSGCore.Functions.Notify(src, string.format(Config.Locale.replacement_cooldown, hours .. ' hours'), 'error')
+        local minutes = math.floor((timeLeft % 3600) / 60)
+        local timeString = ''
+        
+        if hours > 0 then
+            timeString = hours .. ' hour' .. (hours > 1 and 's' or '')
+            if minutes > 0 then
+                timeString = timeString .. ' and ' .. minutes .. ' minute' .. (minutes > 1 and 's' or '')
+            end
+        else
+            timeString = minutes .. ' minute' .. (minutes > 1 and 's' or '')
+        end
+        
+        RSGCore.Functions.Notify(src, string.format(Config.Locale.replacement_cooldown, timeString), 'error')
         return
     end
     

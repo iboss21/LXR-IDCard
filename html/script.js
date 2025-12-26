@@ -133,12 +133,24 @@ function showIDCard(data) {
     // Phase 4: Show expiration date if available
     const expirationRow = document.getElementById('expirationRow');
     if (data.data.expiration) {
-        const expDate = new Date(data.data.expiration);
-        document.getElementById('cardExpiration').textContent = 
-            (expDate.getMonth() + 1).toString().padStart(2, '0') + '/' + 
-            expDate.getDate().toString().padStart(2, '0') + '/' + 
-            expDate.getFullYear();
-        expirationRow.classList.remove('hidden');
+        try {
+            const expDate = new Date(data.data.expiration);
+            
+            // Validate date
+            if (isNaN(expDate.getTime())) {
+                console.error('Invalid expiration date:', data.data.expiration);
+                expirationRow.classList.add('hidden');
+            } else {
+                document.getElementById('cardExpiration').textContent = 
+                    (expDate.getMonth() + 1).toString().padStart(2, '0') + '/' + 
+                    expDate.getDate().toString().padStart(2, '0') + '/' + 
+                    expDate.getFullYear();
+                expirationRow.classList.remove('hidden');
+            }
+        } catch (error) {
+            console.error('Error parsing expiration date:', error);
+            expirationRow.classList.add('hidden');
+        }
     } else {
         expirationRow.classList.add('hidden');
     }
