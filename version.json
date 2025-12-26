@@ -1,8 +1,8 @@
 {
   "name": "tlw_idcard",
   "displayName": "The Land of Wolves - IDCard System",
-  "version": "1.0.0",
-  "description": "Immersive citizenship ID card system for RedM servers using RSG-Core framework",
+  "version": "2.0.0",
+  "description": "Immersive citizenship ID card system for RedM servers using RSG-Core framework with camera integration, ID inspection, replacement system, expiration/renewal, citizenship tiers, and statistics dashboard",
   "author": "The Land of Wolves Team",
   "license": "MIT",
   "repository": {
@@ -31,7 +31,13 @@
     "MySQL database persistence",
     "Admin approval/denial commands",
     "Cooldown system",
-    "Configurable fees and locations"
+    "Configurable fees and locations",
+    "Camera integration for real mugshots (v2.0)",
+    "ID inspection by nearby players (v2.0)",
+    "Lost/stolen ID replacement system (v2.0)",
+    "30-day ID expiration and renewal (v2.0)",
+    "Three citizenship tiers with benefits (v2.0)",
+    "Admin statistics dashboard (v2.0)"
   ],
   "tags": [
     "rsg-core",
@@ -43,7 +49,11 @@
     "ui",
     "nui",
     "discord",
-    "mysql"
+    "mysql",
+    "camera",
+    "inspection",
+    "tiers",
+    "statistics"
   ],
   "compatibility": {
     "redm": "latest",
@@ -60,7 +70,8 @@
       "Add to server.cfg",
       "Restart server"
     ],
-    "documentation": "INSTALL.md"
+    "documentation": "INSTALL.md",
+    "migration": "MIGRATION_GUIDE.md"
   },
   "support": {
     "documentation": [
@@ -69,7 +80,9 @@
       "TROUBLESHOOTING.md",
       "CONTRIBUTING.md",
       "TESTING.md",
-      "UI_PREVIEW.md"
+      "UI_PREVIEW.md",
+      "ROADMAP_IMPLEMENTATION.md",
+      "MIGRATION_GUIDE.md"
     ],
     "examples": [
       "config_examples.lua",

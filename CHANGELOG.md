@@ -5,6 +5,92 @@ All notable changes to The Land of Wolves - IDCard System will be documented in 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2025-12-26
+
+### 🎉 Major Release - Complete Roadmap Implementation
+
+This release implements all 6 phases from the roadmap, transforming the ID card system into a comprehensive citizenship management solution.
+
+### ✨ Added
+
+#### Phase 1: Camera Script Integration for Real Mugshots
+- Camera system for capturing player mugshots with 3D camera positioning
+- Photo data storage in item metadata
+- Mugshot display on ID cards (replaces placeholder)
+- Configurable camera settings (FOV, offset, duration)
+- Smooth camera transitions and animations
+
+#### Phase 2: ID Inspection by Nearby Players
+- ox_target global player interaction for ID inspection
+- Distance-based permission checking (3.0 units default)
+- Request/approval system with ox_lib dialogs
+- Ability to accept or deny inspection requests
+- Same UI for viewing inspected IDs
+
+#### Phase 3: Lost/Stolen ID Replacement System
+- ID replacement at government offices ($150 fee)
+- 24-hour cooldown between replacements
+- Maximum replacement limit (5 default)
+- Database tracking of all replacements
+- New database table: `tlw_id_replacements`
+
+#### Phase 4: Citizenship Expiration/Renewal
+- Automatic 30-day expiration for all IDs
+- Expiration date displayed on ID cards
+- Warning notifications 7 days before expiration
+- Renewal system at government offices ($75 fee)
+- Database tracking of renewals
+- New database table: `tlw_id_renewals`
+
+#### Phase 5: Multiple Citizenship Tiers
+- Three tiers: Basic ($50), Premium ($150), Elite ($500)
+- Tier-specific benefits and pricing
+- Tier badges on ID cards with icons (📋⭐👑)
+- Tier upgrade system with 50% refund
+- ox_lib context menu for tier selection
+
+#### Phase 6: Statistics Dashboard
+- Admin command `/idstats` to view statistics
+- Beautiful dashboard tracking 6 metrics
+- Tier distribution visualization with bar charts
+- Real-time statistics tracking
+- New database table: `tlw_id_statistics`
+
+### 🗄️ Database Changes
+- Added `tier` and `expiration_date` columns to `tlw_id_applications`
+- Created `tlw_id_replacements` table
+- Created `tlw_id_renewals` table
+- Created `tlw_id_statistics` table
+
+### 🎨 UI Enhancements
+- Photo image display on ID cards
+- Tier badge in top-right corner
+- Expiration date row
+- Complete statistics dashboard
+- Color-coded tier indicators
+
+### ⚙️ Configuration
+- New `Config.Camera` section
+- New `Config.Inspection` section
+- New `Config.Replacement` section
+- New `Config.Expiration` section
+- New `Config.Tiers` section
+- New `Config.Statistics` section
+- 20+ new locale strings
+
+### 📚 Documentation
+- Added `ROADMAP_IMPLEMENTATION.md`
+- Added `MIGRATION_GUIDE.md`
+- Updated `README.md` for v2.0
+- Updated `version.json`
+
+### 🔧 Technical
+- 8 new server events
+- Enhanced photo system
+- Statistics tracking helper
+- Expiration calculation helper
+- Improved cooldown management
+
 ## [1.0.0] - 2025-12-26
 
 ### Added
@@ -93,24 +179,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned Features
-- Real camera integration for mugshot photos
-- Photo preview in Discord webhook
-- ID inspection by nearby players
-- Lost/stolen ID replacement system
-- ID verification for restricted areas/jobs
-- Statistics dashboard for admins
-- Citizenship expiration/renewal
-- Multiple citizenship tiers
-- Biometric data (height, weight, eye color)
-- Criminal record integration
-- Photo gallery for government archives
+### Potential Future Features
+- Actual webcam integration for photos
+- Photo filters and editing
+- Multiple ID card designs per tier
+- Family tier packages
+- Seasonal tier bonuses
+- Advanced statistics filtering and export
+- Integration with additional frameworks
+- Multi-language support
+- Custom tier creation via config
+- Tier-specific perks API for other scripts
 
 ---
 
 ## Version Support
 
-- **Current Version**: 1.0.0
+- **Current Version**: 2.0.0
 - **RedM Version**: Latest
 - **RSG-Core**: Latest
 - **Lua Version**: 5.4

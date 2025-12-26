@@ -3,8 +3,10 @@
 **An immersive, premium-quality citizenship ID card system for RedM servers using RSG-Core framework.**
 
 [![Framework](https://img.shields.io/badge/Framework-RSG--Core-blue)](https://github.com/Rexshack-RedM/rsg-core)
-[![Version](https://img.shields.io/badge/version-1.0.0-green)]()
+[![Version](https://img.shields.io/badge/version-2.0.0-green)]()
 [![RedM](https://img.shields.io/badge/RedM-Compatible-red)]()
+
+> **Version 2.0** - Now with complete roadmap implementation! 🎉
 
 ---
 
@@ -22,6 +24,14 @@ The Land of Wolves IDCard script transforms citizenship into an engaging rolepla
 - **Database Persistence**: MySQL storage for all applications
 - **Admin Commands**: Easy approval/denial system
 - **Fully Configurable**: Locations, fees, text, cooldowns
+
+**🆕 NEW ROADMAP FEATURES** (v2.0):
+- **📸 Camera Integration**: Real player mugshots on ID cards
+- **👥 ID Inspection**: Players can inspect each other's IDs
+- **🔄 ID Replacement**: Lost/stolen ID replacement system ($150, 24hr cooldown)
+- **📅 Expiration & Renewal**: 30-day ID validity with renewal system
+- **⭐ Citizenship Tiers**: Basic ($50), Premium ($150), Elite ($500) with unique benefits
+- **📊 Statistics Dashboard**: Admin dashboard tracking all system metrics
 
 ---
 
@@ -66,18 +76,62 @@ The Land of Wolves IDCard script transforms citizenship into an engaging rolepla
 ## 🎮 How It Works
 
 ### For Players
+
+**Basic Flow:**
 1. Visit a **Photographer** (map blip) and take a mugshot ($20)
-2. Go to **Government Office** (map blip) and submit citizenship application ($50)
-3. Receive **Resident Permit** (pending approval)
-4. Wait for admin to review application
-5. Once approved, permit upgrades to **Citizenship Card** with official stamp
-6. Use ID card from inventory to show your status
+2. Go to **Government Office** (map blip) and submit citizenship application
+3. **Choose your tier**: Basic ($50), Premium ($150), or Elite ($500) 🆕
+4. Receive **Resident Permit** (pending approval)
+5. Wait for admin to review application
+6. Once approved, permit upgrades to **Citizenship Card** with official stamp
+7. Use ID card from inventory to show your status
+
+**🆕 New Features:**
+
+**📸 Mugshot Photos**
+- Real camera system captures your character
+- Photo appears on your ID card
+- Replaces generic placeholder
+
+**👥 ID Inspection**
+- Target nearby players with ox_target
+- Request to inspect their ID
+- They can accept or deny your request
+- View their full ID information
+
+**🔄 ID Replacement**
+- Lost your ID? Visit government office
+- Pay $150 replacement fee (higher than original)
+- 24-hour cooldown between replacements
+- Maximum 5 replacements allowed
+
+**📅 Expiration & Renewal**
+- IDs expire after 30 days
+- Warning notifications 7 days before expiration
+- Renew at government office for $75
+- Extends validity for 30 more days
+
+**⭐ Citizenship Tiers**
+- **Basic** ($50): Standard rights and services
+- **Premium** ($150): Priority service + 10% discounts
+- **Elite** ($500): VIP status + 25% discounts + exclusive access
+- Upgrade your tier anytime at government office
+- Get 50% refund of previous tier when upgrading
 
 ### For Admins
 1. Receive Discord notification when player applies
-2. Use `/approveid [playerid]` to grant citizenship
-3. Use `/denyid [playerid]` to reject application
-4. Player's ID automatically upgrades with stamp overlay
+2. Review application details including tier selection
+3. Use `/approveid [playerid]` to grant citizenship
+4. Use `/denyid [playerid]` to reject application
+5. **🆕 Use `/idstats` to view comprehensive statistics dashboard**
+6. Player's ID automatically upgrades with stamp overlay
+
+**🆕 Statistics Dashboard** includes:
+- Total applications, approvals, denials
+- Pending applications count
+- ID replacements and renewals
+- Citizenship tier distribution with charts
+- All metrics tracked automatically
 
 ---
 
@@ -131,6 +185,7 @@ The UI embraces a **dark western frontier aesthetic**:
 |---------|-----------|-------------|
 | `/approveid [id]` | admin | Approve citizenship application |
 | `/denyid [id]` | admin | Deny citizenship application |
+| `/idstats` | admin | View system statistics dashboard 🆕 |
 
 ---
 
@@ -182,12 +237,19 @@ Using this script on your server? Let us know! We'd love to feature your communi
 
 ## 🔮 Roadmap
 
-- [ ] Camera script integration for real mugshots
-- [ ] ID inspection by nearby players
-- [ ] Lost/stolen ID replacement system
-- [ ] Citizenship expiration/renewal
-- [ ] Multiple citizenship tiers
-- [ ] Statistics dashboard
+- [x] **Camera script integration for real mugshots** ✅
+- [x] **ID inspection by nearby players** ✅
+- [x] **Lost/stolen ID replacement system** ✅
+- [x] **Citizenship expiration/renewal** ✅
+- [x] **Multiple citizenship tiers** ✅
+- [x] **Statistics dashboard** ✅
+- [ ] Integration with additional frameworks
+- [ ] Mobile-responsive UI improvements
+- [ ] Additional ID card designs
+
+📖 **See [ROADMAP_IMPLEMENTATION.md](ROADMAP_IMPLEMENTATION.md) for complete feature documentation**
+
+🔄 **Upgrading? See [MIGRATION_GUIDE.md](MIGRATION_GUIDE.md) for migration instructions**
 
 ---
 
