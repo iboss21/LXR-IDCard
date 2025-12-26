@@ -71,15 +71,22 @@
                     <h1 class="card-main-title">THE LAND OF WOLVES</h1>
                     <h2 class="card-doc-type" id="cardDocType">TERRITORIAL IDENTIFICATION</h2>
                     <div class="wolf-emblem">🐺</div>
+                    <!-- Phase 5: Tier Badge -->
+                    <div class="tier-badge hidden" id="tierBadge">
+                        <span id="tierBadgeIcon">📋</span>
+                        <span id="tierBadgeText">Basic</span>
+                    </div>
                 </div>
                 
                 <!-- Photo and Info Section -->
                 <div class="card-body">
                     <div class="photo-section">
                         <div class="photo-frame">
-                            <div class="photo-placeholder">
+                            <!-- Phase 1: Actual mugshot or placeholder -->
+                            <div class="photo-placeholder" id="photoPlaceholder">
                                 <span class="photo-text">OFFICIAL<br>PORTRAIT</span>
                             </div>
+                            <img class="photo-image hidden" id="photoImage" src="" alt="Mugshot">
                         </div>
                     </div>
                     
@@ -113,6 +120,12 @@
                             <span class="info-label">ISSUED:</span>
                             <span class="info-value" id="cardIssued">00/00/0000</span>
                         </div>
+                        
+                        <!-- Phase 4: Expiration Date -->
+                        <div class="info-row hidden" id="expirationRow">
+                            <span class="info-label">EXPIRES:</span>
+                            <span class="info-value" id="cardExpiration">00/00/0000</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -134,6 +147,63 @@
                                 <span class="stamp-bottom">CITIZEN</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Phase 6: Statistics Dashboard -->
+    <div id="statisticsDisplay" class="container hidden">
+        <div class="stats-card">
+            <div class="stats-header">
+                <h1 class="stats-title">🐺 ID CARD SYSTEM STATISTICS</h1>
+                <button class="stats-close-btn" id="statsCloseBtn">✕</button>
+            </div>
+            
+            <div class="stats-content">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-value" id="statApplications">0</div>
+                        <div class="stat-label">Total Applications</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-value" id="statApprovals">0</div>
+                        <div class="stat-label">Approvals</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-icon">❌</div>
+                        <div class="stat-value" id="statDenials">0</div>
+                        <div class="stat-label">Denials</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-value" id="statPending">0</div>
+                        <div class="stat-label">Pending</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-icon">🔄</div>
+                        <div class="stat-value" id="statReplacements">0</div>
+                        <div class="stat-label">Replacements</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-icon">🔁</div>
+                        <div class="stat-value" id="statRenewals">0</div>
+                        <div class="stat-label">Renewals</div>
+                    </div>
+                </div>
+                
+                <div class="tier-distribution">
+                    <h2 class="tier-dist-title">Citizenship Tier Distribution</h2>
+                    <div class="tier-bars" id="tierBars">
+                        <!-- Dynamically populated -->
                     </div>
                 </div>
             </div>
