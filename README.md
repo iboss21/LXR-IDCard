@@ -3,10 +3,10 @@
 **An immersive, premium-quality citizenship ID card system for RedM servers using RSG-Core framework.**
 
 [![Framework](https://img.shields.io/badge/Framework-RSG--Core-blue)](https://github.com/Rexshack-RedM/rsg-core)
-[![Version](https://img.shields.io/badge/version-2.0.0-green)]()
+[![Version](https://img.shields.io/badge/version-3.0.0-green)]()
 [![RedM](https://img.shields.io/badge/RedM-Compatible-red)]()
 
-> **Version 2.0** - Now with complete roadmap implementation! 🎉
+> **Version 3.0** - Enhanced with advanced features and integrations! 🎉
 
 ---
 
@@ -32,6 +32,20 @@ The Land of Wolves IDCard script transforms citizenship into an engaging rolepla
 - **📅 Expiration & Renewal**: 30-day ID validity with renewal system
 - **⭐ Citizenship Tiers**: Basic ($50), Premium ($150), Elite ($500) with unique benefits
 - **📊 Statistics Dashboard**: Admin dashboard tracking all system metrics
+
+**🎉 NEW v3.0 FEATURES**:
+- **🎥 Actual Webcam Integration**: Real player photos using HTML5 webcam API
+- **🎨 Photo Filters & Editing**: Professional photo editing with 5 filters
+- **🎴 Multiple ID Designs**: Tier-specific card templates (up to 4 designs per tier)
+- **👨‍👩‍👧‍👦 Family Tier Packages**: Discounted citizenship for families (20% off)
+- **🍂 Seasonal Bonuses**: Special bonuses based on seasons (5-25% discounts)
+- **📈 Advanced Statistics**: Charts, graphs, and data exports (CSV/JSON)
+- **🌍 Multi-Language Support**: 5 languages (EN, ES, FR, DE, PT)
+- **⚙️ Custom Tier Creation**: Create unlimited custom tiers via config
+- **🔌 Tier Perks API**: Integration API for shops, jobs, and properties
+- **💼 Job System Integration**: Job requirements and pay bonuses by tier
+- **🏠 Property Integration**: Property ownership limits and discounts by tier
+- **⚖️ Criminal Records**: Criminal history affects citizenship approval
 
 ---
 
@@ -186,6 +200,8 @@ The UI embraces a **dark western frontier aesthetic**:
 | `/approveid [id]` | admin | Approve citizenship application |
 | `/denyid [id]` | admin | Deny citizenship application |
 | `/idstats` | admin | View system statistics dashboard 🆕 |
+| `/idlanguage` | all | Change UI language (v3.0) 🆕 |
+| `/createtier` | admin | Create custom citizenship tier (v3.0) 🆕 |
 
 ---
 
@@ -237,15 +253,33 @@ Using this script on your server? Let us know! We'd love to feature your communi
 
 ## 🔮 Roadmap
 
+**v2.0 Features** ✅ (Complete):
 - [x] **Camera script integration for real mugshots** ✅
 - [x] **ID inspection by nearby players** ✅
 - [x] **Lost/stolen ID replacement system** ✅
 - [x] **Citizenship expiration/renewal** ✅
 - [x] **Multiple citizenship tiers** ✅
 - [x] **Statistics dashboard** ✅
+
+**v3.0 Features** ✅ (Complete):
+- [x] **Actual webcam integration** ✅
+- [x] **Photo filters and editing** ✅
+- [x] **Multiple ID card designs per tier** ✅
+- [x] **Family tier packages** ✅
+- [x] **Seasonal tier bonuses** ✅
+- [x] **Advanced statistics (charts, graphs, exports)** ✅
+- [x] **Multi-language support** ✅
+- [x] **Custom tier creation via config** ✅
+- [x] **Tier-specific perks API** ✅
+- [x] **Integration with job systems** ✅
+- [x] **Integration with property systems** ✅
+- [x] **Criminal record integration** ✅
+
+**Future Considerations**:
 - [ ] Integration with additional frameworks
 - [ ] Mobile-responsive UI improvements
-- [ ] Additional ID card designs
+- [ ] AI-powered photo enhancement
+- [ ] Blockchain-based verification
 
 📖 **See [ROADMAP_IMPLEMENTATION.md](ROADMAP_IMPLEMENTATION.md) for complete feature documentation**
 

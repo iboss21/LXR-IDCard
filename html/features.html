@@ -1,0 +1,187 @@
+<!-- v3.0 Enhanced Features -->
+
+<!-- Webcam Capture Interface -->
+<div id="webcamInterface" class="container hidden">
+    <div class="webcam-card">
+        <div class="card-header">
+            <h2 class="subtitle">PHOTOGRAPH SESSION</h2>
+            <p class="info-text">Position yourself and smile!</p>
+        </div>
+        
+        <div class="webcam-preview">
+            <video id="webcamVideo" autoplay playsinline></video>
+            <canvas id="webcamCanvas" style="display: none;"></canvas>
+            <div id="countdownOverlay" class="countdown-overlay hidden">
+                <span id="countdownNumber">3</span>
+            </div>
+        </div>
+        
+        <div class="webcam-controls">
+            <button id="capturePhoto" class="btn-primary">Capture Photo</button>
+            <button id="retakePhoto" class="btn-secondary hidden">Retake</button>
+            <button id="confirmPhoto" class="btn-primary hidden">Use This Photo</button>
+            <button id="cancelWebcam" class="btn-cancel">Cancel</button>
+        </div>
+        
+        <div id="retakeCounter" class="retake-counter hidden">
+            Retakes remaining: <span id="retakesLeft">3</span>
+        </div>
+    </div>
+</div>
+
+<!-- Photo Editor Interface -->
+<div id="photoEditor" class="container hidden">
+    <div class="editor-card">
+        <div class="card-header">
+            <h2 class="subtitle">EDIT YOUR PHOTOGRAPH</h2>
+            <p class="info-text">Apply filters and adjustments</p>
+        </div>
+        
+        <div class="editor-preview">
+            <canvas id="editorCanvas"></canvas>
+        </div>
+        
+        <div class="editor-controls">
+            <div class="control-group">
+                <label for="filterSelect">Filter</label>
+                <select id="filterSelect" class="editor-select">
+                    <option value="none">No Filter</option>
+                    <option value="sepia">Old West Sepia</option>
+                    <option value="grayscale">Black & White</option>
+                    <option value="vintage">Vintage</option>
+                    <option value="aged">Aged Photo</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="brightnessSlider">Brightness: <span id="brightnessValue">100</span>%</label>
+                <input type="range" id="brightnessSlider" min="50" max="150" value="100" class="editor-slider">
+            </div>
+            
+            <div class="control-group">
+                <label for="contrastSlider">Contrast: <span id="contrastValue">100</span>%</label>
+                <input type="range" id="contrastSlider" min="50" max="150" value="100" class="editor-slider">
+            </div>
+            
+            <div class="control-group">
+                <label>Rotation</label>
+                <div class="rotation-buttons">
+                    <button class="btn-rotation" data-angle="0">0°</button>
+                    <button class="btn-rotation" data-angle="90">90°</button>
+                    <button class="btn-rotation" data-angle="180">180°</button>
+                    <button class="btn-rotation" data-angle="270">270°</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="editor-actions">
+            <button id="resetEdits" class="btn-secondary">Reset</button>
+            <button id="confirmEdits" class="btn-primary">Done Editing</button>
+            <button id="cancelEdits" class="btn-cancel">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Advanced Statistics Dashboard -->
+<div id="advancedStatistics" class="container hidden">
+    <div class="stats-dashboard">
+        <div class="dashboard-header">
+            <h1 class="main-title">CITIZENSHIP STATISTICS</h1>
+            <h2 class="subtitle">ADVANCED ANALYTICS DASHBOARD</h2>
+            <div class="dashboard-controls">
+                <button id="refreshStats" class="btn-icon" title="Refresh">🔄</button>
+                <button id="exportCSV" class="btn-icon" title="Export CSV">📊</button>
+                <button id="exportJSON" class="btn-icon" title="Export JSON">📁</button>
+                <button id="filterStats" class="btn-icon" title="Filter">🔍</button>
+                <button id="closeStats" class="btn-icon" title="Close">✖</button>
+            </div>
+        </div>
+        
+        <!-- Key Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon">📝</div>
+                <div class="metric-value" id="totalApplications">0</div>
+                <div class="metric-label">Total Applications</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">✅</div>
+                <div class="metric-value" id="totalApprovals">0</div>
+                <div class="metric-label">Approvals</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">❌</div>
+                <div class="metric-value" id="totalDenials">0</div>
+                <div class="metric-label">Denials</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">⏳</div>
+                <div class="metric-value" id="pendingApplications">0</div>
+                <div class="metric-label">Pending</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">🔄</div>
+                <div class="metric-value" id="totalReplacements">0</div>
+                <div class="metric-label">Replacements</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon">📅</div>
+                <div class="metric-value" id="totalRenewals">0</div>
+                <div class="metric-label">Renewals</div>
+            </div>
+        </div>
+        
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <div class="chart-container">
+                <h3 class="chart-title">Applications Over Time</h3>
+                <canvas id="applicationsChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <h3 class="chart-title">Tier Distribution</h3>
+                <canvas id="tierChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <h3 class="chart-title">Approval Rate</h3>
+                <canvas id="approvalChart"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <h3 class="chart-title">Seasonal Activity</h3>
+                <canvas id="seasonalChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Date Filter -->
+        <div id="dateFilterPanel" class="filter-panel hidden">
+            <h3>Filter by Date Range</h3>
+            <div class="date-inputs">
+                <div class="input-group">
+                    <label>Start Date</label>
+                    <input type="date" id="startDate" class="date-input">
+                </div>
+                <div class="input-group">
+                    <label>End Date</label>
+                    <input type="date" id="endDate" class="date-input">
+                </div>
+            </div>
+            <div class="filter-actions">
+                <button id="applyFilter" class="btn-primary">Apply Filter</button>
+                <button id="clearFilter" class="btn-secondary">Clear</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Seasonal Bonus Notification -->
+<div id="seasonalBanner" class="seasonal-banner hidden">
+    <div class="banner-content">
+        <span class="banner-icon" id="seasonalIcon">❄️</span>
+        <div class="banner-text">
+            <strong id="seasonalTitle">Winter Festival Active!</strong>
+            <span id="seasonalMessage">Enjoy seasonal discounts on citizenship tiers</span>
+        </div>
+    </div>
+</div>

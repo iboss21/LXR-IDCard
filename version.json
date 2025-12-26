@@ -1,7 +1,7 @@
 {
   "name": "tlw_idcard",
   "displayName": "The Land of Wolves - IDCard System",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Immersive citizenship ID card system for RedM servers using RSG-Core framework with camera integration, ID inspection, replacement system, expiration/renewal, citizenship tiers, and statistics dashboard",
   "author": "The Land of Wolves Team",
   "license": "MIT",

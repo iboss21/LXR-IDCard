@@ -269,7 +269,403 @@ Config.Locale = {
     form_submit = 'Submit Application',
     form_cancel = 'Cancel',
     form_validation_error = 'Please fill in all required fields',
+    
+    -- v3.0 Webcam
+    webcam_permission = 'Allow camera access to take your photo',
+    webcam_countdown = 'Photo in %s seconds...',
+    webcam_retake = 'Retake Photo',
+    webcam_confirm = 'Use This Photo',
+    webcam_failed = 'Failed to access webcam. Falling back to in-game camera.',
+    
+    -- v3.0 Photo Editing
+    photo_edit_title = 'Edit Your Photo',
+    photo_filter = 'Apply Filter',
+    photo_brightness = 'Brightness',
+    photo_contrast = 'Contrast',
+    photo_rotate = 'Rotate',
+    photo_done = 'Done Editing',
+    
+    -- v3.0 Card Designs
+    card_design_select = 'Choose ID Card Design',
+    card_design_change = 'Change ID Design',
+    card_design_changed = 'ID card design changed!',
+    
+    -- v3.0 Family Tiers
+    family_tier_prompt = 'Create Family Citizenship',
+    family_member_add = 'Add Family Member',
+    family_package_created = 'Family citizenship package created!',
+    family_insufficient_members = 'You need at least %s members for this package',
+    
+    -- v3.0 Seasonal Bonuses
+    seasonal_bonus_active = 'Seasonal Bonus Active: %s',
+    seasonal_discount_applied = 'Seasonal discount applied: %s%%',
+    
+    -- v3.0 Advanced Statistics
+    stats_export_csv = 'Export to CSV',
+    stats_export_json = 'Export to JSON',
+    stats_filter_dates = 'Filter by Date Range',
+    stats_refresh = 'Refresh Data',
+    
+    -- v3.0 Multi-Language
+    language_select = 'Select Language',
+    language_changed = 'Language changed to %s',
+    
+    -- v3.0 Custom Tiers
+    custom_tier_create = 'Create Custom Tier',
+    custom_tier_created = 'Custom citizenship tier created!',
+    custom_tier_max_reached = 'Maximum custom tiers reached',
+    
+    -- v3.0 Tier Perks
+    perk_activated = 'Tier perk activated: %s',
+    perk_shop_discount = 'Shop discount applied: %s%%',
+    perk_job_bonus = 'Job pay bonus: +%s%%',
+    
+    -- v3.0 Job Integration
+    job_citizenship_required = 'This job requires citizenship',
+    job_tier_required = 'This job requires %s tier or higher',
+    job_bonus_active = 'Citizenship job bonus active',
+    
+    -- v3.0 Property Integration
+    property_citizenship_required = 'Citizenship required to purchase property',
+    property_discount_applied = 'Citizenship discount applied: %s%%',
+    property_limit_reached = 'You have reached your property limit for your tier',
+    
+    -- v3.0 Criminal Records
+    criminal_record_warning = 'Criminal record may affect citizenship approval',
+    criminal_record_tier_denied = 'Criminal record prevents %s tier citizenship',
+    criminal_appeal_prompt = 'Appeal Criminal Record',
+    criminal_appeal_success = 'Criminal record appeal submitted',
 }
 
 -- Admin permissions
 Config.AdminAce = 'admin' -- ACE permission required for approval commands
+
+-- ============================================
+-- v3.0 FEATURES
+-- ============================================
+
+-- 1. Actual Webcam Integration (v3.0)
+Config.Webcam = {
+    enabled = false, -- Enable actual webcam capture
+    provider = 'html5', -- 'html5' or 'external' (requires external script)
+    resolution = {width = 640, height = 480},
+    quality = 0.8, -- JPEG quality (0.1 to 1.0)
+    countdown = 3, -- Countdown before capture (seconds)
+    retakeAllowed = true, -- Allow players to retake photos
+    maxRetakes = 3, -- Maximum retakes allowed
+    fallbackToCamera = true -- Fallback to in-game camera if webcam fails
+}
+
+-- 2. Photo Filters and Editing (v3.0)
+Config.PhotoEditing = {
+    enabled = true,
+    filters = {
+        {name = 'none', label = 'No Filter', css = 'none'},
+        {name = 'sepia', label = 'Old West Sepia', css = 'sepia(80%) contrast(120%)'},
+        {name = 'grayscale', label = 'Black & White', css = 'grayscale(100%)'},
+        {name = 'vintage', label = 'Vintage', css = 'sepia(50%) contrast(110%) brightness(110%)'},
+        {name = 'aged', label = 'Aged Photo', css = 'sepia(90%) contrast(130%) brightness(90%)'}
+    },
+    brightness = {enabled = true, min = 0.5, max = 1.5, default = 1.0},
+    contrast = {enabled = true, min = 0.5, max = 1.5, default = 1.0},
+    rotation = {enabled = true, angles = {0, 90, 180, 270}},
+    crop = {enabled = true, aspectRatio = '1:1'}
+}
+
+-- 3. Multiple ID Card Designs per Tier (v3.0)
+Config.CardDesigns = {
+    enabled = true,
+    designs = {
+        Basic = {
+            {name = 'classic', label = 'Classic Parchment', template = 'classic'},
+            {name = 'simple', label = 'Simple Document', template = 'simple'}
+        },
+        Premium = {
+            {name = 'classic', label = 'Classic Parchment', template = 'classic'},
+            {name = 'ornate', label = 'Ornate Gold', template = 'ornate'},
+            {name = 'leather', label = 'Leather Bound', template = 'leather'}
+        },
+        Elite = {
+            {name = 'classic', label = 'Classic Parchment', template = 'classic'},
+            {name = 'ornate', label = 'Ornate Gold', template = 'ornate'},
+            {name = 'royal', label = 'Royal Decree', template = 'royal'},
+            {name = 'platinum', label = 'Platinum Edition', template = 'platinum'}
+        }
+    },
+    allowChange = true, -- Allow changing design after issuance
+    changeFee = 25.0
+}
+
+-- 4. Family Tier Packages (v3.0)
+Config.FamilyTiers = {
+    enabled = true,
+    packages = {
+        {
+            name = 'Family Basic',
+            label = 'Family Basic Package',
+            minMembers = 2,
+            maxMembers = 4,
+            pricePerMember = 40.0, -- Discounted from $50
+            benefits = {
+                'All Basic benefits',
+                'Family discount (20% off individual price)',
+                'Shared family bond status',
+                'Family tier badge on ID'
+            },
+            color = '#8b6f47',
+            badge = '👨‍👩‍👧‍👦'
+        },
+        {
+            name = 'Family Premium',
+            label = 'Family Premium Package',
+            minMembers = 2,
+            maxMembers = 6,
+            pricePerMember = 120.0, -- Discounted from $150
+            benefits = {
+                'All Premium benefits',
+                'Family discount (20% off individual price)',
+                'Shared family properties access',
+                'Family tier badge on ID',
+                'Priority family services'
+            },
+            color = '#b8860b',
+            badge = '👨‍👩‍👧‍👦⭐'
+        }
+    },
+    requireFamilyScript = false, -- Requires external family/gang script
+    sharedBenefits = true -- Family members share tier benefits
+}
+
+-- 5. Seasonal Tier Bonuses (v3.0)
+Config.SeasonalBonuses = {
+    enabled = true,
+    seasons = {
+        {
+            name = 'winter',
+            label = 'Winter Festival',
+            startMonth = 12, -- December
+            endMonth = 2, -- February
+            bonuses = {
+                Basic = {discount = 0.10, bonus = 'Winter warmth supplies'},
+                Premium = {discount = 0.15, bonus = 'Premium winter gear'},
+                Elite = {discount = 0.25, bonus = 'Elite winter estate access'}
+            },
+            badge = '❄️'
+        },
+        {
+            name = 'spring',
+            label = 'Spring Renewal',
+            startMonth = 3, -- March
+            endMonth = 5, -- May
+            bonuses = {
+                Basic = {discount = 0.05, bonus = 'Spring planting bonus'},
+                Premium = {discount = 0.10, bonus = 'Premium farm access'},
+                Elite = {discount = 0.20, bonus = 'Elite ranch privileges'}
+            },
+            badge = '🌸'
+        },
+        {
+            name = 'summer',
+            label = 'Summer Prosperity',
+            startMonth = 6, -- June
+            endMonth = 8, -- August
+            bonuses = {
+                Basic = {discount = 0.05, bonus = 'Summer trade bonus'},
+                Premium = {discount = 0.10, bonus = 'Premium trading routes'},
+                Elite = {discount = 0.20, bonus = 'Elite commerce rights'}
+            },
+            badge = '☀️'
+        },
+        {
+            name = 'autumn',
+            label = 'Autumn Harvest',
+            startMonth = 9, -- September
+            endMonth = 11, -- November
+            bonuses = {
+                Basic = {discount = 0.10, bonus = 'Harvest festival access'},
+                Premium = {discount = 0.15, bonus = 'Premium harvest rights'},
+                Elite = {discount = 0.25, bonus = 'Elite autumn gala'}
+            },
+            badge = '🍂'
+        }
+    },
+    applyToRenewals = true,
+    applyToUpgrades = true
+}
+
+-- 6. Advanced Statistics (v3.0)
+Config.AdvancedStatistics = {
+    enabled = true,
+    features = {
+        charts = true, -- Enable visual charts
+        graphs = true, -- Enable trend graphs
+        exports = true, -- Enable data exports
+        filtering = true, -- Enable date range filtering
+        realtime = true -- Enable real-time updates
+    },
+    exportFormats = {
+        csv = true,
+        json = true,
+        pdf = false -- Requires external library
+    },
+    charts = {
+        applicationsOverTime = true,
+        tierDistribution = true,
+        approvalRate = true,
+        renewalTrends = true,
+        seasonalActivity = true
+    },
+    refreshInterval = 30000 -- Auto-refresh every 30 seconds (ms)
+}
+
+-- 7. Multi-Language Support (v3.0)
+Config.MultiLanguage = {
+    enabled = true,
+    defaultLanguage = 'en',
+    availableLanguages = {
+        {code = 'en', label = 'English', flag = '🇺🇸'},
+        {code = 'es', label = 'Español', flag = '🇪🇸'},
+        {code = 'fr', label = 'Français', flag = '🇫🇷'},
+        {code = 'de', label = 'Deutsch', flag = '🇩🇪'},
+        {code = 'pt', label = 'Português', flag = '🇵🇹'}
+    },
+    allowPlayerSelection = true, -- Let players choose their language
+    savePreference = true -- Remember player's language choice
+}
+
+-- 8. Custom Tier Creation via Config (v3.0)
+Config.CustomTiers = {
+    enabled = true,
+    allowAdminCreation = true, -- Admins can create tiers in-game
+    tiers = {
+        -- Example custom tier
+        -- {
+        --     name = 'Merchant',
+        --     label = 'Merchant Citizenship',
+        --     price = 200.0,
+        --     benefits = {
+        --         'All Basic benefits',
+        --         'Reduced market fees',
+        --         'Merchant guild access',
+        --         'Priority trading permits'
+        --     },
+        --     color = '#cd7f32',
+        --     badge = '💰',
+        --     requiredJob = 'merchant', -- Optional job requirement
+        --     requiredLevel = 5 -- Optional level requirement
+        -- }
+    },
+    maxCustomTiers = 10 -- Maximum number of custom tiers
+}
+
+-- 9. Tier-Specific Perks API (v3.0)
+Config.TierPerks = {
+    enabled = true,
+    perks = {
+        Basic = {
+            shopDiscounts = 0.0,
+            jobPayBonus = 0.0,
+            housingDiscount = 0.0,
+            fastTravel = false,
+            customEmotes = {},
+            customClothing = {}
+        },
+        Premium = {
+            shopDiscounts = 0.10, -- 10% discount
+            jobPayBonus = 0.05, -- 5% pay bonus
+            housingDiscount = 0.10,
+            fastTravel = true,
+            customEmotes = {'premium_wave', 'premium_salute'},
+            customClothing = {'premium_badge'}
+        },
+        Elite = {
+            shopDiscounts = 0.25, -- 25% discount
+            jobPayBonus = 0.15, -- 15% pay bonus
+            housingDiscount = 0.25,
+            fastTravel = true,
+            customEmotes = {'elite_wave', 'elite_salute', 'elite_bow'},
+            customClothing = {'elite_badge', 'elite_sash'}
+        }
+    },
+    exportForOtherScripts = true, -- Export functions for other scripts to check tier
+    webhookPerkUsage = false -- Log perk usage to Discord
+}
+
+-- 10. Integration with Job Systems (v3.0)
+Config.JobIntegration = {
+    enabled = true,
+    framework = 'rsg-core', -- 'rsg-core', 'qbr-core', 'qbx-core', 'custom'
+    features = {
+        jobRequirements = true, -- Certain jobs require citizenship
+        jobBonuses = true, -- Citizenship tier affects job pay
+        governmentJobs = { -- Jobs that require citizenship
+            'police', 'doctor', 'judge', 'mayor', 'lawyer'
+        },
+        tierJobBonuses = {
+            Basic = 0.0,
+            Premium = 0.05, -- 5% job pay bonus
+            Elite = 0.15 -- 15% job pay bonus
+        }
+    },
+    restrictedJobs = true, -- Some jobs require minimum tier
+    jobTierRequirements = {
+        police = 'Basic',
+        doctor = 'Basic',
+        judge = 'Premium',
+        mayor = 'Elite'
+    }
+}
+
+-- 11. Integration with Property Systems (v3.0)
+Config.PropertyIntegration = {
+    enabled = true,
+    framework = 'rsg-housing', -- 'rsg-housing', 'qbr-housing', 'custom'
+    features = {
+        purchaseRequirement = true, -- Require citizenship to buy property
+        tierDiscounts = true, -- Tier affects property prices
+        tierLimits = true -- Tier affects number of properties
+    },
+    discounts = {
+        Basic = 0.0,
+        Premium = 0.10, -- 10% discount on property purchases
+        Elite = 0.25 -- 25% discount on property purchases
+    },
+    propertyLimits = {
+        none = 0, -- Non-citizens can't own property
+        Basic = 1,
+        Premium = 3,
+        Elite = 10 -- Elite citizens can own up to 10 properties
+    },
+    taxReduction = {
+        Basic = 0.0,
+        Premium = 0.15, -- 15% tax reduction
+        Elite = 0.30 -- 30% tax reduction
+    }
+}
+
+-- 12. Criminal Record Integration (v3.0)
+Config.CriminalRecords = {
+    enabled = true,
+    framework = 'rsg-lawman', -- 'rsg-lawman', 'qbr-policejob', 'custom'
+    features = {
+        showOnID = true, -- Show criminal status on ID card
+        affectApproval = true, -- Criminals may be denied citizenship
+        tierRestrictions = true, -- Criminals can't get high tiers
+        recordExpiry = true -- Records expire after time
+    },
+    maxCrimesForCitizenship = 5, -- Max crimes allowed for Basic citizenship
+    tierCrimeLimits = {
+        Basic = 5,
+        Premium = 2,
+        Elite = 0 -- Elite tier requires clean record
+    },
+    crimeTypes = {
+        minor = {weight = 1, label = 'Minor Offense'},
+        moderate = {weight = 3, label = 'Moderate Crime'},
+        serious = {weight = 5, label = 'Serious Crime'},
+        felony = {weight = 10, label = 'Felony'}
+    },
+    recordExpiryDays = 90, -- Records older than 90 days are cleared
+    allowAppeals = true, -- Players can appeal criminal record
+    appealFee = 100.0
+}
